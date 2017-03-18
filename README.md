@@ -42,8 +42,11 @@ Use Opencv to capture each frame of the video and do the same pre-processing for
 
 During live detection, 'Disgust' is hard to detect for some people, and other emotions are easy to be classified for everyone.
 
-![Image of 4_0.02](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/result.png)
-<!-- 4_0.02 -->
+![Image of 4_1.01](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/result.png)
+<!-- 4_1.01 -->
+
+![Image of 4_1.02](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/result.png)
+<!-- 4_1.02 -->
 
 ## Part 2: Baxter drawing control
 
