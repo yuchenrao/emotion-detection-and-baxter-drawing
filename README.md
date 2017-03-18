@@ -5,6 +5,7 @@
 
 ## Introduction
 
+This project has two parts. The first part is about multi-emotion classification(happy, sad, surprise and disgust) based on Opencv and machine learning. The second part is about Baxter drawing control based on joint trajectory action server, Baxter can draw a specific face based on the detected emotion.
 
 ## Part 1: Emotion classification
 
@@ -12,7 +13,7 @@
 
 [The Cohn-Kanade AU-Coded Facial Expression Database](http://www.pitt.edu/~emotion/ck-spread.htm) is for research in automatic facial image analysis and synthesis and for perceptual studies.
 
-I chose and relabeled data for four emotions: happy(302), sad(238), surprise(256) and disgust(218).
+I choose and relabeled data for four emotions: happy(302), sad(238), surprise(256) and disgust(218).
 
 #### 2. Data pre-processing
 
@@ -26,24 +27,58 @@ I chose and relabeled data for four emotions: happy(302), sad(238), surprise(256
 
 Use [SVM](http://scikit-learn.org/stable/modules/svm.html#svm) machine learning algorithm for training and prediction. The kernel is "linear", and multiclass classification mathod is One-Vs.-One.
 
-In this project, I chose training data: testing data = 7:3.
+In this project, I choose training data: testing data = 7:3.
 
 #### 4. Result
 
-Use 5 folds corss-validation to calculate mean score. And then calculate accuracy for training and testing set, and shows the classification report and confusion matrix.
+Use 5 folds corss-validation to calculate mean score. And then calculate accuracy for training and testing set(98%), and shows the classification report and confusion matrix.
 
-The result shows in
 ![Image of 4_0.01](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/result.png)
 <!-- 4_0.01 -->
 
+#### 5. Live detection based on webcam
+
+Use Opencv to capture each frame of the video and do the same pre-processing for the frame. It can show the emotion it detects.
+
+During live detection, 'Disgust' is hard to detect for some people, and other emotions are easy to be classified for everyone.
+
+![Image of 4_0.02](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/result.png)
+<!-- 4_0.02 -->
+
 ## Part 2: Baxter drawing control
 
-#### 1. Joint trajectory action servse
+#### 1. Introduction
 
+I design four simple faces to represent happy, sad, surprise and disgust. Then I use joint trajectory action server for the Baxter drawing control.
+When Baxter get the drawing command, it will use inverse kinematics to calculate a list of reference angles for each joint for baxter arm moving, which based on the trajectory and time setting. There is a code walkthrough for [joint trajectory client](http://sdk.rethinkrobotics.com/wiki/Joint_Trajectory_Client_-_Code_Walkthrough).
 
+'Control.py' is based on move_to_joint_positions and 'trajectory.py' is based on joint trajectory action server.
 
-#### 2.
+#### 2. Baxter hand
 
+In this project, Baxter uses a new designed hand to capture the pen. The new hand has springs, which makes the pen more flexible on the vertical direction.
 
+![Image of 4_0.07](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/Baxter_hand.JPG)
+<!-- 4_0.07 -->
 
+#### 3. Result
+
+Here is the drawing results for Baxter drawing.
+
+![Image of 4_0.03](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/happy.JPG)
+<!-- 4_0.03 -->
+
+![Image of 4_0.04](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/sad.JPG)
+<!-- 4_0.04 -->
+
+![Image of 4_0.05](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/surprise.JPG)
+<!-- 4_0.05 -->
+
+![Image of 4_0.06](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/disgust.JPG)
+<!-- 4_0.06 -->
+
+## Part 3: Reference
+
+[Emotion detection reference](http://flothesof.github.io/smile-recognition.html)
+[Baxter drawing control reference](https://github.com/MingheJiang/baxter_drawing)
 

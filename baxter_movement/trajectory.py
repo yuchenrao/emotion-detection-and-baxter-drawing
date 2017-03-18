@@ -85,18 +85,11 @@ def Ik_solution(p,q):
         # Format solution into Limb API-compatible dictionary
         limb_joints = dict(zip(resp.joints[0].name, resp.joints[0].position))
         limb_joint = list(resp.joints[0].position)
-        # limb = baxter_interface.Limb('right')
-        # limb.set_joint_positions(limb_joints)
-        # limb.move_to_joint_positions(limb_joints)
-        #print "\nIK Joint Solution:\n", limb_joints
         return limb_joint
 
     else:
         print("INVALID POSE - No Valid Joint Solution Found.")
     return
-
-def BaxterMovement():
-    limb.set_joint_positions(limb_joints)
 
 class Trajectory(object):
     def __init__(self, limb):
@@ -122,7 +115,6 @@ class Trajectory(object):
         point.positions = copy.copy(positions)
         point.time_from_start = rospy.Duration(time)
         self._goal.trajectory.points.append(point)
-        # print point
 
     def start(self):
         self._goal.trajectory.header.stamp = rospy.Time.now()
@@ -158,10 +150,8 @@ def draw_face(keyboard_str, offset_x, offset_y, offset_r):
     traj = Trajectory(limb)
     rospy.on_shutdown(traj.stop)
     limb_interface = baxter_interface.limb.Limb(limb)
-    # draw_circle(0, 0, 1, 0)
     time = 16
 
-    # print "finish"
 
     control.BaxterMovement(p0,q)
     current_angles = [limb_interface.joint_angle(joint) for joint in limb_interface.joint_names()]
@@ -190,8 +180,6 @@ def draw_face(keyboard_str, offset_x, offset_y, offset_r):
 
     # happy
     if keyboard_str == 1:
-        #draw a circle
-        # draw_circle(0, 0, 1)
         eye_left_st = Point(x=x0-0.2*r/100.0,y=y0-0.6*r/100.0,z=z_high)
         eye_left1 = Point(x=x0-0.2*r/100.0,y=y0-0.6*r/100.0,z=z_low)
         eye_left2 = Point(x=x0-0.4*r/100.0,y=y0-0.4*r/100.0,z=z_low)
@@ -247,8 +235,6 @@ def draw_face(keyboard_str, offset_x, offset_y, offset_r):
         traj.add_point(angles_end1, time + 16)
 
     elif keyboard_str == 2:
-        #draw a circle
-        # draw_circle(0, 0, 1)
 
         eye_left_st = Point(x=x0-0.4*r/100.0,y=y0-0.6*r/100.0,z=z_high)
         eye_left1 = Point(x=x0-0.4*r/100.0,y=y0-0.6*r/100.0,z=z_low)
@@ -355,12 +341,9 @@ def draw_face(keyboard_str, offset_x, offset_y, offset_r):
         angles_1 = Ik_solution(mouth_end,q)
         traj.add_point(angles_1, time+14)
 
-        # draw_circle(-0.4, 0.4, 0.15, time+15)
         offset_x = -0.4
         offset_y = 0.4
         offset_r = 0.15
-        # x0 = x0 + 0.05
-        # y0 = y0 +0.05
         time = time + 15
         r_m = offset_r*r
         x0_m = x0+offset_x*r/100
@@ -409,13 +392,9 @@ def draw_face(keyboard_str, offset_x, offset_y, offset_r):
         traj.add_point(angles_end0, time + 5)
         angles_end1 = Ik_solution(p0,q)
         traj.add_point(angles_end1, time + 6)
-        # draw_circle(-0.4, -0.4, 0.15, time+20)
-        # BaxterMovement(p0,q)
 
     #suprise
     elif keyboard_str == 4:
-        #draw a circle
-        # draw_circle(0, 0, 1)
 
         eye_left_st = Point(x=x0-0.6*r/100.0,y=y0-0.6*r/100.0,z=z_high)
         eye_left1 = Point(x=x0-0.6*r/100.0,y=y0-0.6*r/100.0,z=z_low)
@@ -481,70 +460,12 @@ def draw_face(keyboard_str, offset_x, offset_y, offset_r):
     traj.start()
     traj.wait(100)
 
-
-def draw_circle(offset_x, offset_y, offset_r, time):
-
-    r = 10
-    q = Quaternion(x=-0.4177807149532, y=4.099274143222, z=-0.15996636325311, w=-0.1321823626761)
-    q1 = Quaternion(x=-0.5177807149532, y=4.299274143222, z=-0.35996636325311, w=-0.2321823626761)
-    z_high = -0.0051726872428+0.01
-    z_low = -0.0301726872428+0.01
-    x0 = 0.678147548375
-    y0 = -0.2908471534
-    p0 = Point(x=x0,y=y0,z=z_high)
-    p1 = Point(x=x0-0.1,y=y0+0.1,z=z_high)
-    control.BaxterMovement(p0,q)
-
-    limb = "right"
-    traj = Trajectory(limb)
-    rospy.on_shutdown(traj.stop)
-    limb_interface = baxter_interface.limb.Limb(limb)
-    current_angles = [limb_interface.joint_angle(joint) for joint in limb_interface.joint_names()]
-    traj.add_point(current_angles, time)
-
-    start_point = Point(x=x0+(offset_x+offset_r)*r/100.0,y=y0+offset_y*r/100.0,z=z_high)
-    p1 = Point(x=x0+(offset_x+offset_r)*r/100.0,y=y0+offset_y*r/100.0,z=z_low)
-    angles_start0 = Ik_solution(start_point,q)
-    traj.add_point(angles_start0, time + 1)
-    angles_start1 = Ik_solution(p1,q)
-    traj.add_point(angles_start1, time + 2)
-
-    r_m = offset_r*r
-    x0_m = x0+offset_x*r/100
-    y0_m = y0+offset_y*r/100
-    for t in range(1, int(offset_r*100+2)):
-        theta = t*2*3.1415926/(offset_r*100)
-        yp = r_m*math.sin(theta)
-        xp = r_m*math.cos(theta)
-        p2 = Point(x=x0_m+xp/100.0,y=y0_m+yp/100.0,z=z_low)
-        angles = Ik_solution(p2,q)
-        traj.add_point(angles, time + 2+0.1*t)
-
-    angles_end0 = Ik_solution(start_point,q)
-    traj.add_point(angles_end0, time + 14)
-    angles_end1 = Ik_solution(p0,q)
-    traj.add_point(angles_end1, time + 15)
-    traj.start()
-    traj.wait(17)
-    # print "finish circle"
-    # control.BaxterMovement(p1,q1)
-
-
-
 def main():
     rospy.init_node("baxter_movement", anonymous = True)
     hdr = Header(stamp=rospy.Time.now(), frame_id='base')
 
     keyboard_str = int(raw_input('Input:'))
-    # draw_circle(0, 0, 1, 0)
-    # limb = "right"
-    # traj = Trajectory(limb)
     draw_face(keyboard_str, 0, 0, 1)
-    # control.BaxterMovement()
-
-    # control.draw_face(keyboard_str)
-    # traj.start()
-    # traj.wait(100)
 
 if __name__ =='__main__':
     main()
