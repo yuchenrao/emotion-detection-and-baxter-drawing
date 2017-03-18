@@ -58,7 +58,7 @@ When Baxter get the drawing command, it will use inverse kinematics to calculate
 
 In this project, Baxter uses a new designed hand to capture the pen. The new hand has springs, which makes the pen more flexible on the vertical direction.
 
-![Image of 4_0.07](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/Baxter_hand.JPG)
+![Image of 4_0.07](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/Baxter_hand.png)
 <!-- 4_0.07 -->
 
 #### 3. Result
@@ -80,5 +80,6 @@ Here is the drawing results for Baxter drawing.
 ## Part 3: Reference
 
 [Emotion detection reference](http://flothesof.github.io/smile-recognition.html)
+
 [Baxter drawing control reference](https://github.com/MingheJiang/baxter_drawing)
 
