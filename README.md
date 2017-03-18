@@ -33,7 +33,7 @@ In this project, I choose training data: testing data = 7:3.
 
 Use 5 folds corss-validation to calculate mean score. And then calculate accuracy for training and testing set(98%), and shows the classification report and confusion matrix.
 
-![Image of 4_0.01](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/result.png)
+![Image of 4_0.01](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/classify_result.png)
 <!-- 4_0.01 -->
 
 #### 5. Live detection based on webcam
@@ -65,17 +65,11 @@ In this project, Baxter uses a new designed hand to capture the pen. The new han
 
 Here is the drawing results for Baxter drawing.
 
-![Image of 4_0.03](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/happy.JPG)
+![Image of 4_0.03](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/draw_res1.png)
 <!-- 4_0.03 -->
 
-![Image of 4_0.04](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/sad.JPG)
+![Image of 4_0.04](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/draw_res2.png)
 <!-- 4_0.04 -->
-
-![Image of 4_0.05](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/surprise.JPG)
-<!-- 4_0.05 -->
-
-![Image of 4_0.06](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/disgust.JPG)
-<!-- 4_0.06 -->
 
 ## Part 3: Reference
 
