@@ -7,7 +7,9 @@
 
 This project has two parts. The first part is about multi-emotion classification(happy, sad, surprise and disgust) based on Opencv and machine learning. The second part is about Baxter drawing control based on joint trajectory action server, Baxter can draw a specific face based on the detected emotion.
 
-## Part 1: Emotion classification
+Video 'winter_project.mp4' is the result of this project. Also you can see this [video](https://youtu.be/6yXKkfkGYj4) on YouTube.
+
+## Part 1: Emotion classification based on Opencv and machine learning
 
 #### 1. Dataset
 
@@ -48,7 +50,7 @@ During live detection, 'Disgust' is hard to detect for some people, and other em
 ![Image of 4_1.02](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/live_det1.png)
 <!-- 4_1.02 -->
 
-## Part 2: Baxter drawing control
+## Part 2: Baxter drawing control based on joint trajectory action server
 
 #### 1. Introduction
 
@@ -73,6 +75,7 @@ Here is the drawing results for Baxter drawing.
 
 ![Image of 4_0.04](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/draw_res2.png)
 <!-- 4_0.04 -->
+
 
 ## Part 3: Reference
 
