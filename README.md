@@ -76,8 +76,21 @@ Here is the drawing results for Baxter drawing.
 ![Image of 4_0.04](https://github.com/yuchenrao/emotion-detection-and-baxter-drawing/blob/master/picture/draw_res2.png)
 <!-- 4_0.04 -->
 
+## Part 3: Future work
 
-## Part 3: Reference
+#### 1. Emotion detection
+
+1). Find new method to improve the live detection for 'Disgust' emotion;
+
+2). Use more data(people with glasses, Asian people, different directions and light situations);
+
+3). Detect more emotions like fear and anger.
+
+#### 2. Baxter control
+
+Use velocity controller for Baxter movement.
+
+## Part 4: Reference
 
 [Emotion detection reference](http://flothesof.github.io/smile-recognition.html)
 
