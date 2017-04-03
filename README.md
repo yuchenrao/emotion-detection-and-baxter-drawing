@@ -15,7 +15,7 @@ Video 'winter_project.mp4' is the result of this project. Also you can see this 
 
 [The Cohn-Kanade AU-Coded Facial Expression Database](http://www.pitt.edu/~emotion/ck-spread.htm) is for research in automatic facial image analysis and synthesis and for perceptual studies.
 
-I choose and relabeled data for four emotions: happy(302), sad(238), surprise(256) and disgust(218).
+I choose and relabeled data for four emotions: happy (302), sad (238), surprise (256) and disgust (218).
 
 #### 2. Data pre-processing
 
